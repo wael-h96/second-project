@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery-AJAX API Project - Wael Haddad</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+        crossorigin="anonymous"></script>
+
+</head>
+
+<body onload="startHomePage()">
+
+    <div class="header">
+        <h1 class="header-name">Currencies Center</h1>
+    </div>
+
+    <!-- Nav Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <!-- <a class="navbar-brand" style="background-color: grey;">Currencies Center</a> -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <button class="btn btn-primary" name="home-page" onclick="showPage(event)"><i class="fa fa-home"
+                            style="margin-right:4px;"></i>Home</button>
+                </li>
+                <li class="nav-item">
+                    <button class="btn btn-primary" name="live-page" onclick="showPage(event)">Live & Reports</button>
+                </li>
+                <li class="nav-item">
+                    <button class="btn btn-primary" name="about-page" onclick="showPage(event)">About</button>
+                </li>
+
+            </ul>
+            <input class="mr-sm-2" id="currency-input" type="text" placeholder="Search By ID ...">
+            <button class="btn btn-outline-success my-2 my-sm-0" onclick="currencyInputSearch()">Search</button>
+        </div>
+    </nav>
+
+
+    <!-- home Page -->
+    <div id="home-page" class="showPage">
+        <!-- Web Body -->
+        <div id="bar-container" class="loading-container">
+            <div class="loader"></div>
+        </div>
+        <div class="container">
+            <div id="single-card-container" class="row row-col-2" style="display: none;"></div>
+            <div id="cards-container" class="row row-col-2"></div>
+        </div>
+
+        <!-- PopOut model -->
+
+        <div id="myModal" class="modal" style="box-shadow: 0 8px 6px -6px black;">
+            <!-- Modal content -->
+            <div class="modal-content card">
+                <div class="modal-header">
+                    <h2>You Currency Save List</h2>
+                </div>
+                <div id="modal-body" class="modal-body">
+                    <div id="modal-body-cards">
+
+                    </div>
+                    <div style="display: flex; justify-content: center;">
+                        <button id="popout-cancel-btn" class="btn btn-primary"
+                            onclick="popOutDisappear()">Cancel</button>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <h3>You have just 5 spaces to save the currency , and you have reached the maximum capacity.</h3>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- Live and reports page -->
+    <div id="live-page" style="display: none;" class="chart-page">
+        <div id="bar-container-2" class="loading-container">
+            <div class="loader"></div>
+        </div>
+        <div id="chartContainer" style="height: 370px; width: 100%;"></div>
+        <script src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
+        <script src="https://canvasjs.com/assets/script/jquery.canvasjs.min.js"></script>
+        <script src="live&reports.js"></script>
+        <script src="home.js"></script>
+    </div>
+
+
+
+    <!-- About Page -->
+
+    <div class="about-page" id="about-page" style="display: none;background-color: #e8e8e8;">
+        <div class="card mb-3" style="max-width: 900px; height: 400px;">
+            <div class="row no-gutters">
+                <div class="col-md-4">
+                    <img src="https://w0.pngwave.com/png/188/424/software-developer-computer-servers-programmer-web-developer-computer-software-others-png-clip-art-thumbnail.png"
+                        class="card-img" alt="...">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h5 class="card-title">Currency Center Project</h5>
+                        <p class="card-text">About the project : This project contains 3 main pages , first page called
+                            the
+                            home page which displays all the currencies devided 3 in a row, on each card there is a more
+                            info button which
+                            displays the currency's value in EUR , USD , ILS.
+                            The second page is called the Live and Report Page , this page contains a chart that shows
+                            the saved currencies value in USD , the chart updates
+                            each 2 seconds.
+                            Last but not least , the third page is called About page , which you are at now , its a page
+                            that describes the project and information about the
+                            programmer of this site .
+                            Enjoy ...!:)</p>
+                        <p class="card-text"><small class="text-muted">
+                                Author : Wael Haddad.<br>
+                                Age : 23.<br>
+                                Education : Computer Science degree (student),Full stack web developer.<br>
+                                Birthland : Israle / Haifa.<br>
+                            </small></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+
+
+    <script src="home.js"></script>
+    <script src="cache.js"></script>
+    <script src="SPA.js"></script>
+    <script src="live&reports.js"></script>
+</body>
+
+</html>
